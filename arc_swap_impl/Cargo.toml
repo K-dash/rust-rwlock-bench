@@ -1,0 +1,8 @@
+[package]
+name = "arc_swap_impl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8"
+arc-swap = "1"

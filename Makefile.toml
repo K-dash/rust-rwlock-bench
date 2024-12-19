@@ -1,0 +1,14 @@
+[env]
+READ_THREADS = "15"
+DURATION_SEC = "5"
+READ_SLEEP_MS = "10"
+WRITE_INTERVAL_MS = "500"
+DATA_SIZE = "10240" # 10KB
+
+[tasks.run-all]
+description = "Run all benchmarks"
+script = [
+    "cargo run --release --manifest-path arc_rwlock_t/Cargo.toml",
+    "cargo run --release --manifest-path arc_rwlock_arc_t/Cargo.toml",
+    "cargo run --release --manifest-path arc_swap_impl/Cargo.toml"
+]
