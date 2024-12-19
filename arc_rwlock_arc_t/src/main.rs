@@ -1,8 +1,8 @@
 use rand::Rng;
+use std::env::var;
 use std::sync::{Arc, RwLock};
 use std::thread;
 use std::time::{Duration, Instant};
-use std::env::var;
 
 fn main() {
     let read_threads: usize = var("READ_THREADS").unwrap().parse().unwrap();

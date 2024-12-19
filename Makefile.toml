@@ -2,13 +2,36 @@
 READ_THREADS = "15"
 DURATION_SEC = "5"
 READ_SLEEP_MS = "10"
-WRITE_INTERVAL_MS = "500"
-DATA_SIZE = "10240" # 10KB
+WRITE_INTERVAL_MS = "50"
+# DATA_SIZE = "10240" # 10KB
+DATA_SIZE = "10485760" # 10MB
+# DATA_SIZE = "104857600" # 100MB
+
+[tasks.run-rwlock]
+description = "Run Arc<RwLock<T>> benchmark"
+command = "cargo"
+args = ["run", "--release", "--manifest-path", "arc_rwlock_t/Cargo.toml"]
+
+[tasks.run-rwlock-arc]
+description = "Run Arc<RwLock<Arc<T>>> benchmark"
+command = "cargo"
+args = ["run", "--release", "--manifest-path", "arc_rwlock_arc_t/Cargo.toml"]
+
+[tasks.run-arc-swap]
+description = "Run arc-swap benchmark"
+command = "cargo"
+args = ["run", "--release", "--manifest-path", "arc_swap_impl/Cargo.toml"]
+
+[tasks.run-parking-lot-rwlock]
+description = "Run packing_lot_rwlock benchmark"
+command = "cargo"
+args = ["run", "--release", "--manifest-path", "parking_lot_rwlock/Cargo.toml"]
 
 [tasks.run-all]
 description = "Run all benchmarks"
-script = [
-    "cargo run --release --manifest-path arc_rwlock_t/Cargo.toml",
-    "cargo run --release --manifest-path arc_rwlock_arc_t/Cargo.toml",
-    "cargo run --release --manifest-path arc_swap_impl/Cargo.toml"
+dependencies = [
+    "run-rwlock",
+    "run-rwlock-arc",
+    "run-arc-swap",
+    "run-parking-lot-rwlock",
 ]
