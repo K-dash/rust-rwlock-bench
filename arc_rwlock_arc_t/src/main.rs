@@ -16,7 +16,6 @@ fn main() {
     // Arc<RwLock<Arc<T>>> という構造
     let shared = Arc::new(RwLock::new(initial_data));
 
-    let read_threads = read_threads;
     let duration = Duration::from_secs(duration_sec);
     let start = Instant::now();
 

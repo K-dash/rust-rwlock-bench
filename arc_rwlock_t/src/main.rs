@@ -15,7 +15,6 @@ fn main() {
     let initial_data = vec![0u8; data_size];
     let shared = Arc::new(RwLock::new(initial_data));
 
-    let read_threads = read_threads;
     let duration = Duration::from_secs(duration_sec);
     let start = Instant::now();
 

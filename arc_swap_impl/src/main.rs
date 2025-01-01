@@ -12,7 +12,6 @@ fn main() {
     let write_interval_ms: u64 = var("WRITE_INTERVAL_MS").unwrap().parse().unwrap();
     let data_size: usize = var("DATA_SIZE").unwrap().parse().unwrap();
 
-    let read_threads = read_threads;
     let duration = Duration::from_secs(duration_sec);
     let start = Instant::now();
 
